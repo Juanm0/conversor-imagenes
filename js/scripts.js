@@ -1,40 +1,17 @@
-document.getElementById("convertBtn").addEventListener("click", () => {
-    const fileInput = document.getElementById("imageInput");
-    const format = document.getElementById("formatSelect").value;
-    const preview = document.getElementById("preview");
+console.log("Hola mundo desde scripts.js")
 
-    if (!fileInput.files.length) {
-        alert("Por favor selecciona una imagen");
-        return;
-    }
+let number = 42
+let palabra = "JavaScript"
+let booleanValue = true
+let nullValue = null
+let undefinedValue
+let objectValue = { key: "value" }
 
-    const file = fileInput.files[0];
-    const reader = new FileReader();
+let arreglo = [number, palabra, booleanValue, nullValue, undefinedValue, objectValue]
 
-    reader.onload = (e) => {
-        const img = new Image();
-        img.src = e.target.result;
+console.log("Largo del array?:", arreglo.length)
 
-        img.onload = () => {
-            const canvas = document.createElement("canvas");
-            canvas.width = img.width;
-            canvas.height = img.height;
+for (let i = 0; i < arreglo.length; i++) {
+  console.log(`Tipo de dato de ${arreglo[i]}`, typeof arreglo[i])
+}
 
-            const ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0);
-
-            // Convertir y mostrar enlace de descarga
-            canvas.toBlob((blob) => {
-                const url = URL.createObjectURL(blob);
-                preview.innerHTML = `
-                    <h3>Imagen Convertida:</h3>
-                    <img src="${url}">
-                    <br>
-                    <a href="${url}" download="imagen_convertida.${format.split('/')[1]}">Descargar</a>
-                `;
-            }, format);
-        };
-    };
-
-    reader.readAsDataURL(file);
-});
