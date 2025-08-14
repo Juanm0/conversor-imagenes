@@ -109,3 +109,56 @@ function conteoDeEdad(edadIngresada, nombreIngresado){
 conteoDeEdad(edad, nombre)
 
 
+let hobbies = ['Surfear','Jugar','Stremear','Hablar', 'Comer', 'Dormir']
+console.log(`Tamaño de Hobbies ANTES: ${hobbies.length}`)
+console.log(`Hobbies ANTES del PUSH: ${hobbies}`)
+//añadir elemento al final .push
+//eliminar elemento del final .pop
+//añadir elemento al inicio .unshift
+//conocer la cantidad de elementos .length
+hobbies.push('Jugar al Counter', 'Cocinar', 'Tomar Cerveza')
+console.log(`Hobbies DESPUES del PUSH: ${hobbies}`)
+hobbies.pop()
+console.log(`Hobbies DESPUES del POP: ${hobbies}`)
+hobbies.unshift('Fumar')
+console.log(`Hobbies DESPUES del UNSHIFT: ${hobbies}`)
+console.log(`Tamaño de Hobbies FINAL: ${hobbies.length}`)
+
+console.log('-----------------------------------')
+console.log('---- FUNCION FLECHA => ------')
+//Crear un nuevo array con la condicion que le pasemos .filter
+let edades = [24,23,35,25,26,17,16,15,14]
+console.log(`Edades: ${edades}`)
+console.log("Creamos la funcion flecha con el metodo .filter: const mayoresDeEdad = edades.filter(edades => edades >= 18)")
+const mayoresDeEdad = edades.filter(edades => edades >= 18)
+console.log(`Mayores de edad (metodo .filter): ${mayoresDeEdad}`)
+
+console.log("Callbacks")
+
+function pedirComida(plato, callback) {
+  console.log(`Tu pedido de ${plato} fue tomado...`)
+  let pedido = 5;
+  // Simulamos que tarda en estar listo
+  while (pedido >= 0){
+    console.log(`Tu pedido va a estar listo en... ${pedido}`)
+    pedido--
+  }
+  
+  if(pedido == -1){// Llamamos a la función callback
+    console.log(`${plato} está listo 🍕(Funcion callback llamada)`)
+    callback()
+  }else{
+    console.log("Ocurrio un error en la funcion en el pedido")
+  }
+}
+
+function comer() {
+  console.log("Ahora estoy comiendo 🍽️")
+}
+
+pedirComida("Sorrentinos", comer)
+
+
+
+
+//estoy arreglando un caloventor, ya vengo
