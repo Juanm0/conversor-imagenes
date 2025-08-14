@@ -159,6 +159,57 @@ function comer() {
 pedirComida("Sorrentinos", comer)
 
 
+//metodo .map()
+
+let arrNumberString=["Casa",23,3.14,'Juan']
+
+let arrNuevoStringNumber = arrNumberString.map(numero => numero * 2)
+
+console.log(arrNuevoStringNumber)
+
+const suma = [10,20,30].reduce((a,b) => a*b)
+
+console.log(suma)
+
+class Persona {
+  constructor(nombre, edad) {
+    this.nombre = nombre
+    this.edad = edad
+  }
+}
+
+function abm_menu (){
+  console.log("--------------------------------------")
+  console.log("--------------- MENÚ -----------------")
+  console.log("1) Ingresar Usuario")
+  console.log("2) Eliminar Usuario")
+  console.log("3) Modificar Usuario")
+  console.log("4) Salir")
+  console.log("--------------------------------------")
+  console.log("--------------------------------------")
+  return prompt("Elegir opcion")
+}
+
+function alta_usuario(){
+  let alta_usuario = new Persona()
+  do{
+    opcionElegida = abm_menu()
+    if (opcionElegida >= 1 && opcionElegida <=3){
+      alta_usuario.nombre = prompt("Ingrese su nombre: ")
+      alta_usuario.edad = prompt("Ingrese su edad: ")
+      console.log("Alta exitosa")
+    }else{
+      console.log("Error ingrese una opcion valida")
+    }
+  }while(opcionElegida != 4)
+  
+  console.log("Saliendo...")
+
+  return alta_usuario
+  
+}
+
+let nuevoUsuario = alta_usuario()
+console.log(nuevoUsuario)
 
 
-//estoy arreglando un caloventor, ya vengo
