@@ -171,16 +171,27 @@ const suma = [10, 20, 30].reduce((a, b) => a * b)
 
 console.log(suma)
 
-const USUARIOS = {}
+class Usuario{
+  constructor(nombre, password){
+    this.nombre = nombre
+    this.password = password
+  }
+}
+
+const arrayDeUsuarios = [Usuario,Usuario]
+
+
 
 function registrarUsuario() {
   let nombre = prompt("Ingrese su nombre: ")
-  if(USUARIOS[nombre]){
+  let password = prompt("Ingrese su contraseña: ")
+  if(nombre in Usuario){
     console.log("❌El nombre de usuario ya existe. Intente con otro.")
     return
   }
-  let password = prompt("Ingrese su contraseña: ")
-  USUARIOS[nombre] = password
+  const usuario = new Usuario(nombre, password)
+  arrayDeUsuarios.push(usuario)
+  console.log(arrayDeUsuarios)
   alert("✅Usuario registrado con éxito.")
 
 }
@@ -190,11 +201,11 @@ function mostrarUsuarios(){
   console.log("Usuarios Registrados")
   console.log("--------------------")
 
-  if (Object.keys(USUARIOS).length === 0){
+  if (arrayDeUsuarios.length == 0){
     console.log("No hay usuarios registrados.")
   }else{
-    for(let nombre in USUARIOS){
-      console.log(`👤Usuario: ${USUARIOS[nombre]}`)
+    for(let i = 0; i < arrayDeUsuarios.length; i++){
+      console.log(`👤Usuario: ${arrayDeUsuarios[i].nombre}`)
     }
   }
 }
@@ -211,7 +222,7 @@ function menu() {
     console.log("3. Iniciar Sesión")
     console.log("4. Salir")
 
-    opcion = prompt("Seleccione una opción: ")
+    opcion = imput("Seleccione una opción: ")
 
     if (opcion == "1") {
       registrarUsuario()
