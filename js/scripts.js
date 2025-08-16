@@ -18,7 +18,7 @@ for (let i = 0; i < arreglo.length; i++) {
 let numeroString = "123456"
 let numeroFlotante = "3.14"
 console.log("Número como string:" + numeroString + " y número flotante como string:" + numeroFlotante)
-console.log("Tipo de dato de numeroString:"+ typeof numeroString + " y tipo de dato de numeroFlotante:" + typeof numeroFlotante)
+console.log("Tipo de dato de numeroString:" + typeof numeroString + " y tipo de dato de numeroFlotante:" + typeof numeroFlotante)
 let numeroConvertido = parseInt(numeroString)
 
 
@@ -42,16 +42,16 @@ let esEstudiante = true
 let dia = "viernes 4"
 
 
-if (edad >= 18){
+if (edad >= 18) {
   console.log("Eres mayor de edad")
-}else{
+} else {
   console.log("Eres menor de edad")
 }
 
-if (dia == "viernes 5"){
+if (dia == "viernes 5") {
   edad = edad + 1
   console.log("Feliz cumpleaños " + nombre + " ahora tienes " + edad + " años")
-}else{
+} else {
   console.log("Hoy no es tu cumpleaños " + nombre)
 }
 
@@ -72,7 +72,7 @@ switch (dia) {
   case "jueves":
     console.log("Hoy es jueves, casi fin de semana")
     break
-  case "viernes": 
+  case "viernes":
     console.log("Hoy es viernes, fin de semana a la vista")
     break
   case "default":
@@ -101,7 +101,7 @@ function saludar(nombre) {
 saludar("Juan")
 
 
-function conteoDeEdad(edadIngresada, nombreIngresado){
+function conteoDeEdad(edadIngresada, nombreIngresado) {
   console.log(`Tenes ${edadIngresada} años de edad, y tu nombre es ${nombreIngresado}`)
 
 }
@@ -109,7 +109,7 @@ function conteoDeEdad(edadIngresada, nombreIngresado){
 conteoDeEdad(edad, nombre)
 
 
-let hobbies = ['Surfear','Jugar','Stremear','Hablar', 'Comer', 'Dormir']
+let hobbies = ['Surfear', 'Jugar', 'Stremear', 'Hablar', 'Comer', 'Dormir']
 console.log(`Tamaño de Hobbies ANTES: ${hobbies.length}`)
 console.log(`Hobbies ANTES del PUSH: ${hobbies}`)
 //añadir elemento al final .push
@@ -127,7 +127,7 @@ console.log(`Tamaño de Hobbies FINAL: ${hobbies.length}`)
 console.log('-----------------------------------')
 console.log('---- FUNCION FLECHA => ------')
 //Crear un nuevo array con la condicion que le pasemos .filter
-let edades = [24,23,35,25,26,17,16,15,14]
+let edades = [24, 23, 35, 25, 26, 17, 16, 15, 14]
 console.log(`Edades: ${edades}`)
 console.log("Creamos la funcion flecha con el metodo .filter: const mayoresDeEdad = edades.filter(edades => edades >= 18)")
 const mayoresDeEdad = edades.filter(edades => edades >= 18)
@@ -139,15 +139,15 @@ function pedirComida(plato, callback) {
   console.log(`Tu pedido de ${plato} fue tomado...`)
   let pedido = 5;
   // Simulamos que tarda en estar listo
-  while (pedido >= 0){
+  while (pedido >= 0) {
     console.log(`Tu pedido va a estar listo en... ${pedido}`)
     pedido--
   }
-  
-  if(pedido == -1){// Llamamos a la función callback
+
+  if (pedido == -1) {// Llamamos a la función callback
     console.log(`${plato} está listo 🍕(Funcion callback llamada)`)
     callback()
-  }else{
+  } else {
     console.log("Ocurrio un error en la funcion en el pedido")
   }
 }
@@ -161,55 +161,82 @@ pedirComida("Sorrentinos", comer)
 
 //metodo .map()
 
-let arrNumberString=["Casa",23,3.14,'Juan']
+let arrNumberString = ["Casa", 23, 3.14, 'Juan']
 
 let arrNuevoStringNumber = arrNumberString.map(numero => numero * 2)
 
 console.log(arrNuevoStringNumber)
 
-const suma = [10,20,30].reduce((a,b) => a*b)
+const suma = [10, 20, 30].reduce((a, b) => a * b)
 
 console.log(suma)
 
-class Persona {
-  constructor(nombre, edad) {
-    this.nombre = nombre
-    this.edad = edad
+const USUARIOS = {}
+
+function registrarUsuario() {
+  let nombre = prompt("Ingrese su nombre: ")
+  if(USUARIOS[nombre]){
+    console.log("❌El nombre de usuario ya existe. Intente con otro.")
+    return
+  }
+  let password = prompt("Ingrese su contraseña: ")
+  USUARIOS[nombre] = password
+  alert("✅Usuario registrado con éxito.")
+
+}
+
+function mostrarUsuarios(){
+  console.log("--------------------")
+  console.log("Usuarios Registrados")
+  console.log("--------------------")
+
+  if (Object.keys(USUARIOS).length === 0){
+    console.log("No hay usuarios registrados.")
+  }else{
+    for(let nombre in USUARIOS){
+      console.log(`👤Usuario: ${USUARIOS[nombre]}`)
+    }
   }
 }
 
-function abm_menu (){
-  console.log("--------------------------------------")
-  console.log("--------------- MENÚ -----------------")
-  console.log("1) Ingresar Usuario")
-  console.log("2) Eliminar Usuario")
-  console.log("3) Modificar Usuario")
-  console.log("4) Salir")
-  console.log("--------------------------------------")
-  console.log("--------------------------------------")
-  return prompt("Elegir opcion")
-}
 
-function alta_usuario(){
-  let alta_usuario = new Persona()
-  do{
-    opcionElegida = abm_menu()
-    if (opcionElegida >= 1 && opcionElegida <=3){
-      alta_usuario.nombre = prompt("Ingrese su nombre: ")
-      alta_usuario.edad = prompt("Ingrese su edad: ")
-      console.log("Alta exitosa")
-    }else{
-      console.log("Error ingrese una opcion valida")
+function menu() {
+
+  while (true) {
+    console.log("--------------------------")
+    console.log("---   MENÚ PRINCIPAL   ---")
+    console.log("--------------------------")
+    console.log("1. Registrar Usuario")
+    console.log("2. Mostrar Usuarios Registrados")
+    console.log("3. Iniciar Sesión")
+    console.log("4. Salir")
+
+    opcion = prompt("Seleccione una opción: ")
+
+    if (opcion == "1") {
+      registrarUsuario()
     }
-  }while(opcionElegida != 4)
-  
-  console.log("Saliendo...")
+    else if (opcion == "2") {
+      mostrarUsuarios()
+    }
+    else if (opcion == "3") {
+      login()
+    }
+    else if (opcion == "4") {
+      console.log("👋 Saliendo...")
+      break
+    }
+    else {
+      console.log("❌⚠️ Opción inválida. Intente nuevamente.❌⚠️")
+    }
 
-  return alta_usuario
-  
+
+
+  }
+
+
 }
-
-let nuevoUsuario = alta_usuario()
-console.log(nuevoUsuario)
+// #ejecutar
+menu()
 
 
