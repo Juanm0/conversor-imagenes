@@ -178,7 +178,7 @@ class Usuario{
   }
 }
 
-const arrayDeUsuarios = [Usuario,Usuario]
+const arrayDeUsuarios = []
 
 
 
@@ -191,7 +191,6 @@ function registrarUsuario() {
   }
   const usuario = new Usuario(nombre, password)
   arrayDeUsuarios.push(usuario)
-  console.log(arrayDeUsuarios)
   alert("✅Usuario registrado con éxito.")
 
 }
@@ -210,6 +209,18 @@ function mostrarUsuarios(){
   }
 }
 
+function modificarUsuarios(){
+  console.log("Cual Usuario desea modificar?: ")
+  mostrarUsuarios()
+  let nombreIngresado
+  nombreIngresado = promt("Ingrese Nombre tal cual aparece: ")
+  if (nombreIngresado in arrayDeUsuarios.nombre){
+    arrayDeUsuarios[nombreIngresado] = promt("INGRESE NUEVO NOMBRE: ")
+    arrayDeUsuarios[nombreIngresado].password = promt("INGRESE NUEVO NOMBRE: ")
+  }
+
+}
+
 
 function menu() {
 
@@ -219,10 +230,10 @@ function menu() {
     console.log("--------------------------")
     console.log("1. Registrar Usuario")
     console.log("2. Mostrar Usuarios Registrados")
-    console.log("3. Iniciar Sesión")
+    console.log("3. Modificar Usuario")
     console.log("4. Salir")
 
-    opcion = imput("Seleccione una opción: ")
+    opcion = prompt("Seleccione una opción: ")
 
     if (opcion == "1") {
       registrarUsuario()
@@ -231,7 +242,7 @@ function menu() {
       mostrarUsuarios()
     }
     else if (opcion == "3") {
-      login()
+      modificarUsuarios()
     }
     else if (opcion == "4") {
       console.log("👋 Saliendo...")
