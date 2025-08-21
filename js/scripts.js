@@ -171,8 +171,8 @@ const suma = [10, 20, 30].reduce((a, b) => a * b)
 
 console.log(suma)
 
-class Usuario{
-  constructor(nombre, password){
+class Usuario {
+  constructor(nombre, password) {
     this.nombre = nombre
     this.password = password
   }
@@ -185,7 +185,7 @@ const arrayDeUsuarios = []
 function registrarUsuario() {
   let nombre = prompt("Ingrese su nombre: ")
   let password = prompt("Ingrese su contraseña: ")
-  if(nombre in Usuario){
+  if (nombre in Usuario) {
     console.log("❌El nombre de usuario ya existe. Intente con otro.")
     return
   }
@@ -195,45 +195,65 @@ function registrarUsuario() {
 
 }
 
-function mostrarUsuarios(){
+function mostrarUsuarios() {
   console.log("--------------------")
   console.log("Usuarios Registrados")
   console.log("--------------------")
 
-  if (arrayDeUsuarios.length == 0){
+  if (arrayDeUsuarios.length == 0) {
     console.log("No hay usuarios registrados.")
-  }else{
-    for(let i = 0; i < arrayDeUsuarios.length; i++){
+  } else {
+    for (let i = 0; i < arrayDeUsuarios.length; i++) {
       console.log(`👤Usuario: ${arrayDeUsuarios[i].nombre}`)
     }
   }
 }
 
-function modificarUsuarios(){
+function modificarUsuarios() {
   console.log("Cual Usuario desea modificar?: ")
   mostrarUsuarios()
   let nombreIngresado
-  nombreIngresado = promt("Ingrese Nombre tal cual aparece: ")
-  if (nombreIngresado in arrayDeUsuarios.nombre){
-    arrayDeUsuarios[nombreIngresado] = promt("INGRESE NUEVO NOMBRE: ")
-    arrayDeUsuarios[nombreIngresado].password = promt("INGRESE NUEVO NOMBRE: ")
+  nombreIngresado = prompt("Ingrese Nombre tal cual aparece: ")
+  let usuario = arrayDeUsuarios.find(u => u.nombre === nombreIngresado);//find devuelve la direccion de memoria del array, pero en la documentacion dice que devuelve solo el valor
+  if (usuario) {
+    usuario.nombre = prompt("Ingrese nuevo nombre: ")   // <-- acá se modifica
+    usuario.password = prompt("Ingrese nueva contraseña: ") // <-- acá también
+    console.log("Usuario modificado con éxito ✅")
+  } else {
+    console.log("Usuario no encontrado ❌")
   }
-
 }
+
+function eliminarUsuario() {
+  console.log("Cual Usuario desea Eliminar?: ")
+  mostrarUsuarios()
+  let nombreIngresado
+  nombreIngresado = prompt("Ingrese Nombre tal cual aparece: ")
+  let index = arrayDeUsuarios.findIndex(u => u.nombre === nombreIngresado);
+  if (index !== -1) {
+    arrayDeUsuarios.splice(index, 1); // elimina 1 elemento en esa posición
+    console.log("Usuario eliminado con éxito ✅")
+  } else {
+    console.log("Usuario no encontrado ❌")
+  }
+}
+
 
 
 function menu() {
 
   while (true) {
-    console.log("--------------------------")
-    console.log("---   MENÚ PRINCIPAL   ---")
-    console.log("--------------------------")
-    console.log("1. Registrar Usuario")
-    console.log("2. Mostrar Usuarios Registrados")
-    console.log("3. Modificar Usuario")
-    console.log("4. Salir")
-
-    opcion = prompt("Seleccione una opción: ")
+    var opcion = prompt(
+      "--------------------------\n" +
+      "---   MENÚ PRINCIPAL   ---\n" +
+      "--------------------------\n" +
+      "1. Registrar Usuario\n" +
+      "2. Mostrar Usuarios Registrados\n" +
+      "3. Modificar Usuario\n" +
+      "4. Eliminar Usuario\n" +
+      "5. Salir\n\n" +
+      "Seleccione una opción:"
+    )
 
     if (opcion == "1") {
       registrarUsuario()
@@ -245,6 +265,9 @@ function menu() {
       modificarUsuarios()
     }
     else if (opcion == "4") {
+      eliminarUsuario()
+    }
+    else if (opcion == "5") {
       console.log("👋 Saliendo...")
       break
     }
