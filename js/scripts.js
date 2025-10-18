@@ -284,4 +284,22 @@
 // // #ejecutar
 // menu()
 
+class Producto {
+    constructor(nombre, precio){
+        this.nombre = nombre.toUpperCase();
+        this.precio = parseFloat(precio);
+        this.vendido = false;
+    }
+    mostrarPrecioIva(){
+        console.log(this.precio + (this.precio * 0.21));
+    }
+}
 
+const productos = [];
+productos.push(new Producto("arroz", "125"));
+productos.push(new Producto("fideo", "70"));
+productos.push(new Producto("pan", "50"));
+
+for (const producto of productos){
+    producto.mostrarPrecioIva();   
+}
