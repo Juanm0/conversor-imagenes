@@ -2,25 +2,25 @@
 
 🟢 NIVEL PRINCIPIANTE (solo JavaScript, sin HTML ni CSS)
 
-Suma simple: pide dos números con prompt() y muestra la suma con alert().
+1Suma simple: pide dos números con prompt() y muestra la suma con alert().
 
-Par o impar: pide un número y muestra si es par o impar.
+2Par o impar: pide un número y muestra si es par o impar.
 
-Mayor de tres: pide tres números y muestra cuál es el mayor.
+3Mayor de tres: pide tres números y muestra cuál es el mayor.
 
-Contador de letras: pide una palabra y muestra cuántas letras tiene.
+4) Contador de letras: pide una palabra y muestra cuántas letras tiene.
 
-Conversor de temperatura: convierte grados Celsius a Fahrenheit.
+5) Conversor de temperatura: convierte grados Celsius a Fahrenheit.
 
-Tabla de multiplicar: muestra la tabla de multiplicar de un número (del 1 al 10).
+6) Tabla de multiplicar: muestra la tabla de multiplicar de un número (del 1 al 10).
 
-Array de nombres: pide 5 nombres y guárdalos en un array, luego muéstralos en consola.
+7) Array de nombres: pide 5 nombres y guárdalos en un array, luego muéstralos en consola.
 
-Buscar en array: pide un nombre y verifica si existe en el array anterior.
+8) Buscar en array: pide un nombre y verifica si existe en el array anterior.
 
-Promedio: calcula el promedio de un array de números [10, 5, 8, 7, 9].
+9) Promedio: calcula el promedio de un array de números [10, 5, 8, 7, 9].
 
-Contador de vocales: pide una palabra y muestra cuántas vocales tiene.
+10) Contador de vocales: pide una palabra y muestra cuántas vocales tiene.
 
 
 
@@ -119,7 +119,73 @@ APROBADOOOOOOOOOOOO
 
 //4) Contador de letras: pide una palabra y muestra cuántas letras tiene.
 
-let palabraIngresada = [prompt("ingrese una palabra")];
-console.log(palabraIngresada.length);
+/* let palabraIngresada = prompt("ingrese una palabra");
+alert(`La palabra que acaba de ingresar (${palabraIngresada}) tiene ${palabraIngresada.length} letras`);
 
+
+
+APROBADOOO
+
+ */
+
+//5) Conversor de temperatura: convierte grados Celsius a Fahrenheit.
+
+
+/* let grados  = prompt("Ingrese sus grados en celsius: ");
+
+function convertirCelsiusAFahrenheit (gradosCelsius){
+    let resultadoFahrenheit = (parseFloat(gradosCelsius) * (9/5)) + 32;
+    return resultadoFahrenheit;
+}
+
+let gradosConvertidos = convertirCelsiusAFahrenheit(grados);
+alert(`Los grados que usted ingresó son igual a ${gradosConvertidos}°F`);
+
+APROBADOO
+*/
+
+//6) Tabla de multiplicar: muestra la tabla de multiplicar de un número (del 1 al 10).
+
+/* let ingreseNumero = parseFloat(prompt("Ingrese un numero y te hago la tabla de multiplicar (del 1 al 10): "));
+
+
+alert(`    ${ingreseNumero} X 1 = ${ingreseNumero * 1}\n
+    ${ingreseNumero} X 2 = ${ingreseNumero * 2}\n
+    ${ingreseNumero} X 3 = ${ingreseNumero * 3}\n
+    ${ingreseNumero} X 4 = ${ingreseNumero * 4}\n
+    ${ingreseNumero} X 5 = ${ingreseNumero * 5}\n
+    ${ingreseNumero} X 6 = ${ingreseNumero * 6}\n
+    ${ingreseNumero} X 7 = ${ingreseNumero * 7}\n
+    ${ingreseNumero} X 8 = ${ingreseNumero * 8}\n
+    ${ingreseNumero} X 9 = ${ingreseNumero * 9}\n
+    ${ingreseNumero} X 10 = ${ingreseNumero * 10}\n`) 
+    
+    
+    
+DESAPROBADOOO, LA VERSION PRO ES LA SIGUENTE: 
+
+*******************VERSION CON ALERT*************************
+
+const numero = parseInt(prompt("Ingrese un número para ver su tabla de multiplicar:"));
+
+let mensaje = `Tabla del ${numero}:\n`;
+
+for (let i = 1; i <= 10; i++) {
+  mensaje += `${numero} x ${i} = ${numero * i}\n`;
+}
+
+alert(mensaje);
+
+******SEGUNDA FORMA DE HACERLO (CON console.log)************
+
+const numero = parseInt(prompt("Ingrese un número para ver su tabla de multiplicar:"));
+
+console.log(`\nTabla del ${numero}:`);
+for (let i = 1; i <= 10; i++) {
+  console.log(`${numero} x ${i} = ${numero * i}`);
+}
+
+*/
+
+// 7) Array de nombres: pide 5 nombres y guárdalos en un array, luego muéstralos en consola.
 
