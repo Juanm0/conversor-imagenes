@@ -70,7 +70,6 @@ To-do avanzado: permite marcar tareas como hechas (tachadas) y borrarlas.
 
 Memotest simple: 6 cartas (3 pares) que se dan vuelta y deben coincidir.
 
-
 */
 
 //1) Suma simple: pide dos números con prompt() y muestra la suma con alert().
