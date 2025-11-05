@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Academia Online - Cursos</title>
+  <meta name="description" content="Vende cursos online: landing, catálogo, carrito y checkout simple." />
+  <link rel="stylesheet" href="../css/cursos.css">
+  <script src="../js/cursos.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">A</div>
+        <div>
+          <div style="font-weight:700">Academia Online</div>
+          <div style="font-size:12px;color:var(--muted)">Aprende. Practica. Avanza.</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#cursos">Cursos</a>
+        <a href="#contacto">Contacto</a>
+        <button id="openCart" class="btn">Carrito (<span id="cartCount">0</span>)</button>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-card">
+        <h1>Vende tus cursos con una página simple y efectiva</h1>
+        <p>Landing optimizada para convertir visitantes en estudiantes. Catálogo, carrito local y formulario de pago simulado (sin procesador real).</p>
+        <div style="display:flex;gap:12px;margin-top:12px">
+          <button class="btn" onclick="document.getElementById('cursos').scrollIntoView({behavior:'smooth'})">Ver cursos</button>
+          <a class="btn ghost" href="#contacto">Contactar</a>
+        </div>
+        <div style="margin-top:18px;display:flex;gap:8px;align-items:center">
+          <div style="background:var(--glass);padding:8px;border-radius:8px">✅ Garantía de 7 días</div>
+          <div style="background:var(--glass);padding:8px;border-radius:8px">📚 Acceso de por vida</div>
+        </div>
+      </div>
+
+      <aside style="padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#f8fbff);box-shadow:0 8px 20px rgba(12,24,60,0.04);">
+        <h3 style="margin:0 0 8px">Tu tienda lista</h3>
+        <p class="muted" style="margin:0 0 14px">Prueba a agregar cursos al carrito y simular un checkout. Los datos se guardarán en el navegador.</p>
+        <div style="display:flex;gap:8px">
+          <div style="flex:1">
+            <strong id="subtotal">Subtotal: $0</strong>
+            <div class="muted" style="font-size:13px">Impuestos y envíos no aplican (digital)</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="cursos">
+      <h2>Catálogo de cursos</h2>
+      <div class="grid" id="coursesGrid">
+        <!-- Cursos generados por JS -->
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Cart floating button -->
+  <button id="cartFloat" class="cart-btn">🛒 <span id="cartFloatCount">0</span></button>
+
+  <!-- Drawer -->
+  <aside id="drawer" class="drawer" aria-hidden="true">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h3>Tu carrito</h3>
+      <div><button id="closeDrawer" class="btn ghost">Cerrar</button></div>
+    </div>
+    <div id="cartItems" style="margin-top:14px">No hay productos en el carrito.</div>
+    <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center">
+      <strong>Total: $<span id="cartTotal">0</span></strong>
+    </div>
+
+    <hr style="margin:18px 0" />
+    <h4>Checkout (simulado)</h4>
+    <form id="checkoutForm">
+      <label for="name">Nombre</label>
+      <input id="name" required placeholder="Juan Perez" />
+      <label for="email">Email</label>
+      <input id="email" type="email" required placeholder="juan@ejemplo.com" />
+      <label for="notes">Comentarios (opcional)</label>
+      <textarea id="notes" rows="3" placeholder="¿Necesitas factura? ..."></textarea>
+      <button type="submit" class="btn" style="margin-top:12px">Pagar (simulado)</button>
+    </form>
+
+    <div id="checkoutResult" style="display:none;margin-top:12px;padding:10px;border-radius:8px;background:#eef8ff"></div>
+  </aside>
+
+  <footer id="contacto">
+    <div class="container">
+      <p>¿Quieres que te arme la tienda, integración con Stripe/PayPal o pasarela local? Contáctame.</p>
+      <small>Academia Online — Ejemplo de demo • &copy; <span id="year"></span></small>
+    </div>
+  </footer>
+
+ 
+</body>
+</html>

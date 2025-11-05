@@ -1,0 +1,235 @@
+:root {
+    --accent: #5b6cff;
+    --muted: #6b7280;
+    --bg: #f6f8ff;
+    --card: #ffffff;
+    --glass: rgba(255, 255, 255, 0.6);
+    --radius: 14px;
+    --max-width: 1100px;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    background: linear-gradient(180deg, var(--bg), #fff);
+    color: #111
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 32px auto;
+    padding: 0 20px
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 0
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px
+}
+
+.logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), #7bd389);
+    display: grid;
+    place-items: center;
+    color: white;
+    font-weight: 700
+}
+
+nav a {
+    margin-left: 12px;
+    text-decoration: none;
+    color: var(--muted)
+}
+
+.btn {
+    background: var(--accent);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+    font-weight: 600
+}
+
+.btn.ghost {
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    color: var(--muted)
+}
+
+/* Hero */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 24px;
+    align-items: center;
+    margin: 28px 0
+}
+
+.hero-card {
+    background: linear-gradient(180deg, rgba(91, 108, 255, 0.08), transparent);
+    border-radius: var(--radius);
+    padding: 28px
+}
+
+.hero h1 {
+    font-size: 28px;
+    margin: 0 0 8px
+}
+
+.hero p {
+    color: var(--muted);
+    margin: 0 0 18px
+}
+
+/* Courses grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+    margin-top: 18px
+}
+
+.course {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 8px 20px rgba(12, 24, 60, 0.06);
+    display: flex;
+    flex-direction: column
+}
+
+.thumb {
+    height: 140px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #dedefc, #f1f6ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 12px
+}
+
+.meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.price {
+    font-weight: 700
+}
+
+.tags {
+    color: var(--muted);
+    font-size: 13px
+}
+
+.course p {
+    color: var(--muted);
+    font-size: 14px;
+    flex: 1
+}
+
+/* Cart */
+.cart-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: var(--accent);
+    color: #fff;
+    padding: 12px 14px;
+    border-radius: 999px;
+    box-shadow: 0 8px 30px rgba(87, 84, 255, 0.18);
+    border: 0;
+    cursor: pointer
+}
+
+/* Modal / drawer */
+.drawer {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 420px;
+    background: linear-gradient(180deg, #fff, #f7f9ff);
+    box-shadow: -20px 0 40px rgba(12, 24, 60, 0.08);
+    transform: translateX(110%);
+    transition: transform .28s ease;
+    padding: 22px
+}
+
+.drawer.open {
+    transform: translateX(0)
+}
+
+.cart-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(12, 24, 60, 0.04)
+}
+
+.cart-item strong {
+    display: block
+}
+
+.muted {
+    color: var(--muted)
+}
+
+/* Checkout form */
+form input,
+form button,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(12, 24, 60, 0.06);
+    margin-top: 8px
+}
+
+form label {
+    font-weight: 600;
+    margin-top: 12px;
+    display: block
+}
+
+/* Footer */
+footer {
+    margin: 36px 0;
+    padding: 18px 0;
+    color: var(--muted);
+    text-align: center
+}
+
+/* Responsive */
+@media (max-width:880px) {
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .drawer {
+        width: 100%;
+    }
+}
