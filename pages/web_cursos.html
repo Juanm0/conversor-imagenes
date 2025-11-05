@@ -1,336 +1,61 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Academia Online - Cursos</title>
-  <meta name="description" content="Vende cursos online: landing, catálogo, carrito y checkout simple." />
-  <style>
-    :root{
-      --accent:#5b6cff;
-      --muted:#6b7280;
-      --bg:#f6f8ff;
-      --card:#ffffff;
-      --glass: rgba(255,255,255,0.6);
-      --radius:14px;
-      --max-width:1100px;
-      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#fff);color:#111}
-    .container{max-width:var(--max-width);margin:32px auto;padding:0 20px}
-
-    /* Header */
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7bd389);display:grid;place-items:center;color:white;font-weight:700}
-    nav a{margin-left:12px;text-decoration:none;color:var(--muted)}
-    .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
-    .btn.ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);color:var(--muted)}
-
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:center;margin:28px 0}
-    .hero-card{background:linear-gradient(180deg,rgba(91,108,255,0.08),transparent);border-radius:var(--radius);padding:28px}
-    .hero h1{font-size:28px;margin:0 0 8px}
-    .hero p{color:var(--muted);margin:0 0 18px}
-
-    /* Courses grid */
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;margin-top:18px}
-    .course{background:var(--card);border-radius:12px;padding:14px;box-shadow:0 8px 20px rgba(12,24,60,0.06);display:flex;flex-direction:column}
-    .thumb{height:140px;border-radius:10px;background:linear-gradient(135deg,#dedefc,#f1f6ff);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);margin-bottom:12px}
-    .meta{display:flex;justify-content:space-between;align-items:center}
-    .price{font-weight:700}
-    .tags{color:var(--muted);font-size:13px}
-    .course p{color:var(--muted);font-size:14px;flex:1}
-
-    /* Cart */
-    .cart-btn{position:fixed;right:20px;bottom:20px;background:var(--accent);color:#fff;padding:12px 14px;border-radius:999px;box-shadow:0 8px 30px rgba(87,84,255,0.18);border:0;cursor:pointer}
-
-    /* Modal / drawer */
-    .drawer{position:fixed;right:0;top:0;height:100%;width:420px;background:linear-gradient(180deg,#fff, #f7f9ff);box-shadow:-20px 0 40px rgba(12,24,60,0.08);transform:translateX(110%);transition:transform .28s ease;padding:22px}
-    .drawer.open{transform:translateX(0)}
-    .cart-item{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(12,24,60,0.04)}
-    .cart-item strong{display:block}
-    .muted{color:var(--muted)}
-
-    /* Checkout form */
-    form input, form button, form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(12,24,60,0.06);margin-top:8px}
-    form label{font-weight:600;margin-top:12px;display:block}
-
-    /* Footer */
-    footer{margin:36px 0;padding:18px 0;color:var(--muted);text-align:center}
-
-    /* Responsive */
-    @media (max-width:880px){
-      .hero{grid-template-columns:1fr;}
-      .drawer{width:100%;}
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursos | DevSyntax Academy</title>
+  <link rel="stylesheet" href="../css/cursos2.css">
+  <script src="../js/cursos2.js" defer></script>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">A</div>
-        <div>
-          <div style="font-weight:700">Academia Online</div>
-          <div style="font-size:12px;color:var(--muted)">Aprende. Practica. Avanza.</div>
-        </div>
-      </div>
-      <nav>
-        <a href="#cursos">Cursos</a>
-        <a href="#contacto">Contacto</a>
-        <button id="openCart" class="btn">Carrito (<span id="cartCount">0</span>)</button>
-      </nav>
-    </header>
+  <header class="header">
+    <nav class="navbar">
+      <div class="logo" onclick="window.location.href='../index.html'">DevSyntax<span>Academy</span></div>
+      <ul class="nav-links">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="#">Cursos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <section class="hero">
-      <div class="hero-card">
-        <h1>Vende tus cursos con una página simple y efectiva</h1>
-        <p>Landing optimizada para convertir visitantes en estudiantes. Catálogo, carrito local y formulario de pago simulado (sin procesador real).</p>
-        <div style="display:flex;gap:12px;margin-top:12px">
-          <button class="btn" onclick="document.getElementById('cursos').scrollIntoView({behavior:'smooth'})">Ver cursos</button>
-          <a class="btn ghost" href="#contacto">Contactar</a>
-        </div>
-        <div style="margin-top:18px;display:flex;gap:8px;align-items:center">
-          <div style="background:var(--glass);padding:8px;border-radius:8px">✅ Garantía de 7 días</div>
-          <div style="background:var(--glass);padding:8px;border-radius:8px">📚 Acceso de por vida</div>
-        </div>
-      </div>
+  <section class="hero">
+    <h1>Nuestros Cursos</h1>
+    <p>Aprendé desde cero con nuestros programas diseñados para futuros desarrolladores.</p>
+  </section>
 
-      <aside style="padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#f8fbff);box-shadow:0 8px 20px rgba(12,24,60,0.04);">
-        <h3 style="margin:0 0 8px">Tu tienda lista</h3>
-        <p class="muted" style="margin:0 0 14px">Prueba a agregar cursos al carrito y simular un checkout. Los datos se guardarán en el navegador.</p>
-        <div style="display:flex;gap:8px">
-          <div style="flex:1">
-            <strong id="subtotal">Subtotal: $0</strong>
-            <div class="muted" style="font-size:13px">Impuestos y envíos no aplican (digital)</div>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <section id="cursos">
-      <h2>Catálogo de cursos</h2>
-      <div class="grid" id="coursesGrid">
-        <!-- Cursos generados por JS -->
-      </div>
-    </section>
-
-  </div>
-
-  <!-- Cart floating button -->
-  <button id="cartFloat" class="cart-btn">🛒 <span id="cartFloatCount">0</span></button>
-
-  <!-- Drawer -->
-  <aside id="drawer" class="drawer" aria-hidden="true">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <h3>Tu carrito</h3>
-      <div><button id="closeDrawer" class="btn ghost">Cerrar</button></div>
-    </div>
-    <div id="cartItems" style="margin-top:14px">No hay productos en el carrito.</div>
-    <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center">
-      <strong>Total: $<span id="cartTotal">0</span></strong>
+  <section class="courses-container">
+    <div class="course-card">
+      <img src="../assets/img/html-css.jpg" alt="HTML y CSS">
+      <h3>HTML & CSS – Nivel Básico</h3>
+      <p>Aprendé a estructurar y dar estilo a tus primeras páginas web.</p>
+      <button class="btn-course">Ver más</button>
     </div>
 
-    <hr style="margin:18px 0" />
-    <h4>Checkout (simulado)</h4>
-    <form id="checkoutForm">
-      <label for="name">Nombre</label>
-      <input id="name" required placeholder="Juan Perez" />
-      <label for="email">Email</label>
-      <input id="email" type="email" required placeholder="juan@ejemplo.com" />
-      <label for="notes">Comentarios (opcional)</label>
-      <textarea id="notes" rows="3" placeholder="¿Necesitas factura? ..."></textarea>
-      <button type="submit" class="btn" style="margin-top:12px">Pagar (simulado)</button>
-    </form>
-
-    <div id="checkoutResult" style="display:none;margin-top:12px;padding:10px;border-radius:8px;background:#eef8ff"></div>
-  </aside>
-
-  <footer id="contacto">
-    <div class="container">
-      <p>¿Quieres que te arme la tienda, integración con Stripe/PayPal o pasarela local? Contáctame.</p>
-      <small>Academia Online — Ejemplo de demo • &copy; <span id="year"></span></small>
+    <div class="course-card">
+      <img src="../assets/img/js.jpg" alt="JavaScript">
+      <h3>JavaScript – Nivel Intermedio</h3>
+      <p>Domina la lógica, el DOM y las APIs para crear proyectos reales.</p>
+      <button class="btn-course">Ver más</button>
     </div>
+
+    <div class="course-card">
+      <img src="../assets/img/python.jpg" alt="Python">
+      <h3>Python – Nivel Básico</h3>
+      <p>Introducción a la programación con uno de los lenguajes más usados del mundo.</p>
+      <button class="btn-course">Ver más</button>
+    </div>
+
+    <div class="course-card">
+      <img src="../assets/img/ingles.jpg" alt="Inglés Técnico">
+      <h3>Inglés Técnico para Programadores</h3>
+      <p>Aprendé vocabulario y expresiones clave para el mundo IT.</p>
+      <button class="btn-course">Ver más</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 DevSyntax Academy. Todos los derechos reservados.</p>
   </footer>
-
-  <script>
-    // Datos de ejemplo de cursos
-    const COURSES = [
-      { id: 'c1', title: 'QA Automation desde cero', price: 4990, subtitle: 'Selenium, Python, CI/CD', duration: '30h' },
-      { id: 'c2', title: 'Desarrollo Web Full Stack', price: 7990, subtitle: 'HTML, CSS, JS, Node', duration: '60h' },
-      { id: 'c3', title: 'SQL y Bases de Datos', price: 3490, subtitle: 'Consultas, Stored Procedures', duration: '25h' },
-      { id: 'c4', title: 'Unity - Juego 3D', price: 6590, subtitle: 'C#, Mecánicas, Multiplayer', duration: '40h' },
-      { id: 'c5', title: 'Python para Data', price: 4290, subtitle: 'Pandas, Visualización', duration: '35h' }
-    ];
-
-    // Elementos
-    const grid = document.getElementById('coursesGrid');
-    const cartCount = document.getElementById('cartCount');
-    const cartFloatCount = document.getElementById('cartFloatCount');
-    const cartFloat = document.getElementById('cartFloat');
-    const openCart = document.getElementById('openCart');
-    const drawer = document.getElementById('drawer');
-    const closeDrawer = document.getElementById('closeDrawer');
-    const cartItemsEl = document.getElementById('cartItems');
-    const cartTotalEl = document.getElementById('cartTotal');
-    const subtotalEl = document.getElementById('subtotal');
-    const yearEl = document.getElementById('year');
-    yearEl.textContent = new Date().getFullYear();
-
-    // Carrito en localStorage
-    const CART_KEY = 'academy_demo_cart_v1';
-    let cart = JSON.parse(localStorage.getItem(CART_KEY) || '{}');
-
-    function saveCart(){
-      localStorage.setItem(CART_KEY, JSON.stringify(cart));
-      renderCartCount();
-    }
-
-    function renderCourses(){
-      grid.innerHTML = '';
-      COURSES.forEach(c => {
-        const el = document.createElement('article');
-        el.className = 'course';
-        el.innerHTML = `
-          <div class="thumb">${c.title.split(' ')[0]}</div>
-          <h3 style="margin:0 0 6px">${c.title}</h3>
-          <div class="meta"><div class="tags">${c.subtitle} • ${c.duration}</div><div class="price">$${c.price}</div></div>
-          <p>Aprende las habilidades prácticas paso a paso con proyectos reales y soporte del instructor.</p>
-          <div style="display:flex;gap:8px;margin-top:12px">
-            <button class="btn" onclick="addToCart('${c.id}')">Comprar</button>
-            <button class="btn ghost" onclick="viewDetails('${c.id}')">Ver</button>
-          </div>
-        `;
-        grid.appendChild(el);
-      });
-    }
-
-    function renderCartCount(){
-      const totalItems = Object.values(cart).reduce((s,v)=>s+v.qty,0);
-      cartCount.textContent = totalItems;
-      cartFloatCount.textContent = totalItems;
-    }
-
-    function addToCart(id){
-      const course = COURSES.find(x=>x.id===id);
-      if(!course) return;
-      if(!cart[id]) cart[id] = { ...course, qty: 0 };
-      cart[id].qty += 1;
-      saveCart();
-      toast('Agregado al carrito');
-      renderDrawer();
-    }
-
-    function viewDetails(id){
-      const c = COURSES.find(x=>x.id===id);
-      alert(c.title + "\n\n" + c.subtitle + "\nDuración: " + c.duration + "\nPrecio: $" + c.price);
-    }
-
-    function renderDrawer(){
-      const keys = Object.keys(cart);
-      if(keys.length===0){
-        cartItemsEl.innerHTML = '<div class="muted">No hay productos en el carrito.</div>';
-        cartTotalEl.textContent = '0';
-        subtotalEl.textContent = 'Subtotal: $0';
-        return;
-      }
-      cartItemsEl.innerHTML = '';
-      let total = 0;
-      keys.forEach(k=>{
-        const item = cart[k];
-        total += item.price * item.qty;
-        const row = document.createElement('div');
-        row.className = 'cart-item';
-        row.innerHTML = `
-          <div style="flex:1">
-            <strong>${item.title}</strong>
-            <div class="muted">$${item.price} x ${item.qty}</div>
-          </div>
-          <div style="text-align:right">
-            <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end">
-              <button class="btn ghost" onclick="changeQty('${k}',1)">+</button>
-              <button class="btn ghost" onclick="changeQty('${k}',-1)">-</button>
-              <button class="btn ghost" style="margin-top:6px" onclick="removeItem('${k}')">Eliminar</button>
-            </div>
-          </div>
-        `;
-        cartItemsEl.appendChild(row);
-      });
-      cartTotalEl.textContent = total;
-      subtotalEl.textContent = `Subtotal: $${total}`;
-    }
-
-    function changeQty(id, delta){
-      if(!cart[id]) return;
-      cart[id].qty += delta;
-      if(cart[id].qty <= 0) delete cart[id];
-      saveCart();
-      renderDrawer();
-    }
-
-    function removeItem(id){
-      delete cart[id];
-      saveCart();
-      renderDrawer();
-    }
-
-    // Drawer open/close
-    function openDrawer(){ drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false'); }
-    function closeDrawerF(){ drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); }
-    openCart.addEventListener('click', ()=>{ renderDrawer(); openDrawer(); });
-    cartFloat.addEventListener('click', ()=>{ renderDrawer(); openDrawer(); });
-    closeDrawer.addEventListener('click', closeDrawerF);
-
-    // Checkout (simulado)
-    const checkoutForm = document.getElementById('checkoutForm');
-    const checkoutResult = document.getElementById('checkoutResult');
-    checkoutForm.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const keys = Object.keys(cart);
-      if(keys.length===0){ alert('El carrito está vacío'); return; }
-      // Simular "pago"
-      const order = {
-        id: 'ORD-' + Date.now(),
-        name, email,
-        items: keys.map(k=>({ id:k, title:cart[k].title, qty: cart[k].qty, price: cart[k].price })),
-        total: Number(cartTotalEl.textContent)
-      };
-      // Aquí podrías enviar "order" a tu servidor
-      console.log('Order simulated', order);
-      checkoutResult.style.display = 'block';
-      checkoutResult.textContent = `Pedido creado: ${order.id}. Se envió un correo a ${email} (simulado).`;
-      // Vaciar carrito
-      cart = {};
-      saveCart();
-      renderDrawer();
-    });
-
-    // Helpers
-    function toast(msg){
-      const t = document.createElement('div');
-      t.textContent = msg;
-      t.style.position = 'fixed';
-      t.style.left = '50%';
-      t.style.transform = 'translateX(-50%)';
-      t.style.bottom = '22px';
-      t.style.padding = '10px 14px';
-      t.style.background = 'rgba(0,0,0,0.8)';
-      t.style.color = 'white';
-      t.style.borderRadius = '8px';
-      t.style.zIndex = 9999;
-      document.body.appendChild(t);
-      setTimeout(()=>{ t.style.transition='opacity .4s'; t.style.opacity=0; setTimeout(()=>t.remove(),400); },1200);
-    }
-
-    // Inicializar
-    renderCourses();
-    renderCartCount();
-    renderDrawer();
-    saveCart();
-  </script>
 </body>
 </html>
